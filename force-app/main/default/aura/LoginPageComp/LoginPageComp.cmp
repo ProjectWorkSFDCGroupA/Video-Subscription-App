@@ -1,0 +1,35 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="customerController">
+    <aura:attribute name="email" type="String"/>
+    <aura:attribute name="passKey" type="String"/>
+    
+    <div class="mainDiv slds-align_absolute-center slds-p-around_large">
+        <div class="slds-col slds-large-size_1-of-3 slds-small-size_2-of-3 slds-small-size_1-of-1">
+            <div class="slds-card mainCard">
+                <div class="slds-card_header slds-align_absolute-center headerImage">
+                    <img class="headerImage" src="{!$Resource.appLogo}"/>
+                </div>
+                <div class="slds-card_body cardBody slds-p-horizontal--small">        
+                    <div class="slds-p-around_large">
+                        <div class="slds-grid slds-wrap slds-p-horizontal--small">                                                                                
+                            <div class="slds-col slds-p-top--xx_small">
+                                <lightning:input label="User Id" type="email" value="{!v.email}" required="true"/>
+                            </div>
+                        </div><br/>
+                        <div class="slds-grid slds-wrap slds-p-horizontal--small">                                                                      
+                            <div class="slds-col slds-p-top--xx_small">
+                                <lightning:input label="Pass Key" type="password" value="{!v.passKey}" required="true"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer slds-p-horizontal_xx-large">
+                        <lightning:button class="slds-button_stretch btnCls" label="Login" type="submit" variant="inverse" onclick="{!c.checkValid}"/>     
+                    </div>
+                    <div class="slds-p-bottom-medium">
+                        <a onclick="{!c.redSignup}" class="slds-align_absolute-center signUp">New User? Sign Up</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</aura:component>

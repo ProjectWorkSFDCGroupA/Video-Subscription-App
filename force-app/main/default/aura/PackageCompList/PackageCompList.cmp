@@ -1,0 +1,23 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="customerController">
+    
+    <aura:attribute name="packages" type="Packages__c[]"/>
+    <aura:attribute name="selectedPackage" type="Packages__c" default="{'sObjectType':'Packages__c'}"/>
+    <aura:handler name="packageEvent" event="c:PackageEvent" action="{!c.handleBookNowEvent}"/>
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds-grid mainDiv slds-p-around_large">
+        <aura:iteration items="{!v.packages}" var="packageInfo">
+            <div class="slds-col slds-large-size_1-of-3  slds-small-size_1-of-3 slds-small-size_1-of-3 slds-p-around_medium">                     
+                <c:PackageComp package="{!packageInfo}"/>
+            </div>
+        </aura:iteration>     
+    </div>
+    
+    <aura:if isTrue="{!v.isOpen}">
+        <div class="cardDiv">
+            <c:CardDetailComp package="{!v.selectedPackage}" isOpen="{!v.isOpen}"/>
+        </div>
+    </aura:if>
+    
+</aura:component>

@@ -1,0 +1,12 @@
+.THIS {
+}
+.THIS.mainDiv{
+    text-align: center;    
+    background: rgb(38,28,30);
+    background: linear-gradient(90deg, rgba(38,28,30,1) 35%, rgba(131,0,0,1) 100%, rgba(110,17,17,0.7231267507002801) 100%);
+}
+.THIS.cardDiv{
+    text-align: center;    
+    background: rgb(38,28,30);
+    background: linear-gradient(90deg, rgba(38,28,30,1) 35%, rgba(131,0,0,1) 100%, rgba(110,17,17,0.7231267507002801) 100%);
+}

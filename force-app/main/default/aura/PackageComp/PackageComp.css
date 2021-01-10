@@ -1,0 +1,42 @@
+.THIS {
+}
+.THIS .headerImage{
+    height: 80px;
+    width: 80px;
+    border-radius: 1rem;
+    margin-top : 15px;
+    margin-bottom : 10px;
+}
+
+.THIS.mainCard{
+    border-radius : 2rem;
+    width : 80%;
+    margin-left: 40px;
+}
+.THIS .content{
+    font-family: cursive;
+    font-weight: 800;
+    font-size: 26px;
+}
+.THIS .conRead{
+    font-family : cursive;
+    font-weight: 510;
+    font-size : 18px;
+}
+.THIS .btnCls{
+    width: 67%;
+    padding:5px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-radius: 1.5rem;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(200,16,16,1) 0%, rgba(55,28,28,1) 100%);
+    font-size: 15px;
+    color: white!important;
+    font-family: cursive;
+}
+.THIS .btnCls:hover {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,11,11,1) 0%, rgba(189,15,15,1) 100%);
+    color:  white!important;
+    transform: scale(1.1);
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}

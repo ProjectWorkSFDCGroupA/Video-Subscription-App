@@ -1,0 +1,36 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="customer" type="Object"/>
+    <aura:attribute name="simpleCustomer" type="Object"/>
+    <force:recordData aura:id="customerRecordCreator"
+                      fields="Name__c,Email__c,Phone__c"
+                      targetRecord="{!v.customer}"
+                      targetFields ="{!v.simpleCustomer}"
+                      />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div class="mainDiv slds-align_absolute-center slds-p-around_large">
+        <div class="slds-col slds-large-size_1-of-3 slds-small-size_2-of-3 slds-small-size_1-of-1">
+            <div class="slds-card mainCard">     
+                <div class="slds-card_header slds-align_absolute-center cardHeading">
+                    <img class="headerImage" src="{!$Resource.appLogo}"/>
+                </div>
+                <div class="slds-card_body cardBody">
+                    <div class="slds-p-horizontal--small">
+                        <p class="labelCls">Name</p>
+                        <lightning:input aura:id="customerField" type="text" value="{!v.simpleCustomer.Name}"/><br/>
+                        <p class="labelCls">Email</p>
+                        <lightning:input aura:id="customerField" type="email" value="{!v.simpleCustomer.Email__c}"/><br/>
+                        <p class="phoneCls">Phone</p>
+                        <lightning:input aura:id="customerField" type="phone" maxlength="10" minlength="10" value="{!v.simpleCustomer.Phone__c}"/><br/>
+                        <br/>
+                        <div class="footer slds-p-top-medium">
+                            <lightning:button class="slds-button_stretch btnCls" label="Sign Up" variant="inverse" onclick="{!c.handleSaveCustomer}"/>
+                        </div>
+                        <div>
+                        	<a onclick="{!c.redLogin}" class="slds-align_absolute-center loginUser">Already a User? Login</a>                   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

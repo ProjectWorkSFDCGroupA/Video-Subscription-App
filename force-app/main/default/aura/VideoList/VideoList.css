@@ -1,0 +1,53 @@
+.THIS {
+}
+.THIS .scrollable {
+    height: 400px;
+    overflow-y:auto;
+}
+.THIS .slds-card{
+    border: none;
+}
+.THIS .headerCls{
+    background-color: #2b3838!important;
+    border-radius: 0rem!important;
+}
+.THIS .slds-select{
+    background-color: #2b3838!important;
+    color: white!important;
+    width: 150px;
+}
+.THIS .label-hidden> label{
+    display:none;
+}
+.THIS.listBody{
+    background: rgb(38,28,30);
+    background: linear-gradient(90deg, rgba(38,28,30,1) 35%, rgba(131,0,0,1) 100%, rgba(110,17,17,0.7231267507002801) 100%);
+}
+.THIS .flexBox{
+    display:flex;
+}
+
+.THIS .borderBox{
+    border-style: solid!important;
+    border-width: 8px!important;
+    border-radius: 0.4rem!important;
+    border-color: #736d6d!important;
+    display: flex;
+}
+.THIS .errorMessage{
+    color: white;
+    text-align : center;
+    font-family : cursive;
+    font-size: 19px;
+}
+.THIS .whitelabel{
+    color: white!important;
+}
+.THIS .resetButton{
+    color: #ffffff!important;
+    white-space: nowrap;
+    background-color: #2b3838!important;
+    padding: 5px;
+    border : 1px solid white!important;
+    border-radius: 0.3rem;
+}

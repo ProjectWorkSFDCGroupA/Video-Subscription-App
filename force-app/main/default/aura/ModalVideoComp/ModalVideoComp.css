@@ -1,0 +1,28 @@
+.THIS {
+}
+.THIS .avatarCustom{
+    height: 457px;
+    width: 1050px;
+    border-radius: 8px;
+}
+.THIS .headerContent{
+    background: rgb(38,28,30);
+    background: linear-gradient(90deg, rgba(38,28,30,1) 0%, rgba(92,42,42,1) 0%, rgba(0,0,0,1) 100%);
+}
+.THIS .headerName{
+    font-family : cursive;
+    color: #fafcfc!important;
+    font-weight : 1000;
+    font-size: x-large;
+}
+.THIS .bodyMod{
+    background: rgb(38,28,30);
+    background: linear-gradient(90deg, rgba(38,28,30,1) 0%, rgba(92,42,42,1) 0%, rgba(0,0,0,1) 100%);
+    min-height: 480px!important;
+}
+.THIS .container{
+    width: 80% !important;
+    max-width: 70rem!important;
+    min-width: 70rem!important;
+    
+}

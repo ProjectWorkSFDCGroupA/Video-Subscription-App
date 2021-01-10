@@ -1,0 +1,30 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="customerController">
+    <aura:registerEvent name="packageEvent" type="c:PackageEvent"/>
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="package" type="Packages__c" default="{'sObjectType':'Packages__c'}"/>
+    
+    
+    <div class="slds-card mainCard">     
+        <div class="slds-clearfix slds-p-around_medium">
+            <div class="slds-card_header slds-align_absolute-center cardHeading">
+                <img class="headerImage" src="{!$Resource.appLogo}"/>
+            </div>
+            <div class="slds-card_body container slds-align_absolute-center slds-p-around_large">
+                <div class="content">
+                    {!v.package.Package_Name__c} <br/>
+                    Rs. {!v.package.Total_price__c}/-
+                </div>
+            </div>
+            <div>
+                <div class="conRead">
+                    Duration<br/>
+                    {!v.package.Duration__c}&nbsp;months<br/>
+                    Unlimited movies and TV shows
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-p-around_small slds-align_absolute-center">
+			<lightning:button class="slds-button_stretch btnCls" iconName="utility:date_input" label="Select" variant="inverse" onclick="{!c.fireBookNowEvent}"/>
+        </div>
+    </div>   
+</aura:component>

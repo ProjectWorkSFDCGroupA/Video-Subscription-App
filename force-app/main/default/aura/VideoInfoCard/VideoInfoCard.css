@@ -1,0 +1,27 @@
+.THIS {
+}
+.THIS .thumbnail{
+    height: 200px;
+    width: 350px;
+    border-radius: 1.5rem;
+}
+.THIS .videoName{
+    font-family: cursive;
+    color: #427bf5!important;
+}
+.THIS .pTag{
+    font-family: "Trebuchet MS", "sans-serif";
+    letter-spacing : 1px;
+}
+.THIS.mainCard{
+    margin-bottom: 10px;
+    border-radius: 1rem;
+}
+.THIS .button-card{
+    margin-left: 1150px;
+    font-size: 10px;
+    padding: 5px;
+    border-radius: 0.6rem;
+    background-color: #2f3033;
+    color: white;
+}

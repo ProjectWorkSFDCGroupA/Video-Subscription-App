@@ -1,0 +1,78 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="customerController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="card" type="Card_Detail__c" default="{'sObjectType':'Card_Detail__c'}"/>
+    <aura:attribute name="recId" type="String"/>
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="package" type="Packages__c"/>
+    
+    <div class="mainDiv slds-align_absolute-center slds-p-around_large">
+        <div class="slds-col slds-large-size_1-of-3 slds-small-size_1-of-1 slds-small-size_1-of-1">
+            <div class="slds-card mainCard">     
+                <div class="slds-card_header slds-align_absolute-center cardHeading">
+                    <img class="headerImage" src="{!$Resource.appLogo}"/>  
+                </div>
+                <div class="slds-card_body cardBody">
+                    
+                    <div class="slds-p-around_medium">
+                        <h3 class="pay slds-align_absolute-center">Set up your credit or debit card </h3><br/>
+                        
+                    </div>
+                    <div class="slds-grid slds-wrap slds-p-horizontal--large">
+                        <div class="slds-col slds-small-size_1-of-1 slds-p-top_small">
+                            <div class="packageCls">
+                                You have Chosen
+                                <lightning:formattedText value="{!v.package.Package_Name__c}" /><br/>
+                                Payable Rs. 
+                                <lightning:formattedNumber value="{!v.package.Total_price__c}" />/-
+                            </div>
+                        </div>
+                    </div>
+                    <lightning:recordEditForm aura:id = "appForm"
+                                              objectApiName="Card_Detail__c"
+                                              onsubmit="{!c.confirmPayment}">
+                        
+                        <div class="slds-p-around_large">
+                            <div class="slds-grid slds-wrap slds-p-horizontal--large">
+                                <div class="slds-col slds-small-size_1-of-1 slds-p-top_small">
+                                    <lightning:inputField aura:id="amountField" fieldName="Amount__c" value="{!v.package.Total_price__c}" disabled="true"/> 
+                                </div>
+                            </div>
+                            <div class="slds-grid slds-wrap slds-p-horizontal--large">
+                                <div class="slds-col slds-small-size_1-of-1 slds-p-top_small">
+                                    <lightning:inputField aura:id="cnameField" fieldName="Customer_Name__c" value="{!v.card.Customer_Name__c}" disabled="true"/> 
+                                </div>
+                            </div>
+                            <div class="slds-grid slds-wrap slds-p-horizontal--large">
+                                <div class="slds-col slds-small-size_1-of-1 slds-p-top_small">
+                                    <lightning:inputField aura:id="customerField" fieldName="Card_Holder_Name__c" value="{!v.card.Card_Holder_Name__c}"/> 
+                                </div>
+                            </div>
+                            <div class="slds-grid slds-wrap slds-p-horizontal--large">
+                                <div class="slds-col slds-medium-size_2-of-3 slds-p-top_small">
+                                    <lightning:inputField aura:id="cardNumberField" type="number" fieldName="Card_Number__c" value="{!v.card.Card_Number__c}"/> 
+                                </div>
+                                <div class="slds-col slds-medium-size_1-of-3 slds-p-top_small">
+                                    <lightning:inputField aura:id="cardNumberField" type="pin" class="masked" fieldName="Pin__c" value="{!v.card.Pin__c}"/>
+                                </div>
+                            </div>
+                            <div class="slds-grid slds-wrap slds-p-horizontal--large">
+                                <div class="slds-col slds-medium-size_1-of-3 slds-p-top_small">
+                                    <lightning:inputField aura:id="cardField" fieldName="Exp_Month__c"  value="{!v.card.Exp_Month__c}"/>
+                                </div>
+                                <div class="slds-col slds-medium-size_2-of-3 slds-p-top_small">
+                                    <lightning:inputField aura:id="cardField" fieldName="Exp_Year__c" value="{!v.card.Exp_Year__c}"/>
+                                </div>
+                            </div> 
+                            <div class="footer slds-small-size_1-of-1 slds-p-top-large">
+                                <lightning:button class="slds-button_stretch slds-p-horizontal--large btnCls" label="Start MemberShip" variant="inverse" type="submit"/>
+                            </div>
+                            <div class="slds-p-bottom-medium">
+                                <a onclick="{!c.redLogin}" class="slds-align_absolute-center loginUser">Go Back To Login Page</a>
+                            </div>
+                        </div>  
+                    </lightning:recordEditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,33 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    
+    <aura:attribute name="video" type="Video_Detail__c" default="{'sObjectType':'Video_Detail__c'}"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:registerEvent name="playScript" type="c:ModalVideoEvent"/>
+    <aura:registerEvent name="registerCase" type="c:CaseEvent"/>
+    <aura:attribute name="isOpen" type="Boolean" default="false"/>
+    
+    <div class="slds-card mainCard">     
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-large-size_3-of-12 slds-medium-size_4-of-12 slds-small-size_1-of-1">
+                <div class="slds-clearfix slds-p-around_medium">
+                    <div class="image">
+                        <img src="{!v.video.Picture_URL__c}" class="thumbnail" />
+                    </div>
+                </div>
+            </div>           
+            <div class="slds-col slds-large-size_9-of-12 slds-medium-size_8-of-12 slds-small-size_1-of-1 slds-p-around_medium slds-m-top_medium">
+                <a onclick="{!c.navigate}"><h3 class="slds-text-heading_large videoName slds-m-bottom_xx-small">{!v.video.Name__c}</h3></a>
+                <br/>
+                <p class="pTag">Released On : <strong>{!v.video.Released_Date__c}</strong></p>
+                <br/>
+                <p class="pTag">Category : <strong>{!v.video.Category__c}</strong></p>
+                <br/>
+                <p class="pTag">Duration : <strong>{!v.video.Duration__c}</strong></p>
+            </div>
+            <div class="slds-col  slds-medium-size_4-of-12 slds-align_absolute-center slds-clearfix">
+                <lightning:button label=" Report " class="slds-float--left button-card" onclick="{!c.fireCaseEvent}"/>
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

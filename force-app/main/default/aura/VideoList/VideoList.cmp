@@ -1,0 +1,88 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:hasRecordId,force:lightningQuickAction" access="global" controller="customerController">
+    <aura:attribute name="selectedCategory" type="String" />
+    <aura:attribute name="selectedDuration" type="String" />
+    <aura:attribute name="selectedRelevance" type="String" />
+    <aura:attribute name="videos" type="Video_Detail__c[]"/>  
+    <aura:attribute name="recId" type="String"/>
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="isCaseOpen" type="boolean" default="false"/>
+    <aura:attribute name="displayMessage" type="boolean" default="true"/>
+    <aura:attribute name="selectedVideo" type="Video_Detail__c" default="{'sObjectType':'Video_Detail__c'}"/>
+    <aura:attribute name="selectedVideocase" type="Video_Detail__c" default="{'sObjectType':'Video_Detail__c'}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="playScript" event="c:ModalVideoEvent" action="{!c.handleEvent}"/>
+    <aura:handler event="c:CaseEvent" action="{!c.handleApplicationEvent}"/>
+    
+    <!-- Filter-->
+    <div class="stickyheader">
+        <div class="slds-card headerCls">
+            <form>
+                <div class="slds-grid slds-wrap slds-p-horizontal_large">
+                    <div class="slds-col slds-align_absolute-center slds-size_1-of-2 slds-medium-size_2-of-6  slds-large-size--1-of-6">
+                        <div class="slds-m-around_small">
+                            <lightning:select class="label-hidden borderBox" label="" onchange="{! c.onChange }" value="{!v.selectedCategory}">
+                                <option value="%">Category</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Inspirational">Inspirational</option>
+                                <option value="Comedy">Comedy</option>
+                                <option value="Cooking">Cooking</option>
+                                <option value="Educational">Educational</option>
+                                <option value="Travel">Travel</option>
+                            </lightning:select>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-align_absolute-center slds-size_1-of-2 slds-medium-size_2-of-6  slds-large-size--1-of-6">
+                        <div class="slds-m-around_small">
+                            <lightning:select class="label-hidden borderBox" label="" onchange="{! c.onChange }" value="{!v.selectedDuration}">
+                                <option value="%">Duration</option>
+                                <option value="Short">Short (less than 5 mins)</option>
+                                <option value="Long">Long (greater than 5 mins)</option>
+                            </lightning:select>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-col slds-align_absolute-center slds-small-size_1-of-2 slds-medium-size_2-of-6  slds-large-size--2-of-6">
+                        <div class="slds-m-around_small flexBox">
+                            <label class="whitelabel slds-p-top_small">Sort By &nbsp;&nbsp;&nbsp;</label>
+                            <lightning:select class="label-hidden borderBox" label="" onchange="{! c.onChange }" value="{!v.selectedRelevance}">
+                                <option value="">Relevance</option>
+                                <option value="uploadDate">Upload Date</option>
+                            </lightning:select>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-align_absolute-center slds-size_1-of-3 slds-medium-size_2-of-6  slds-large-size--1-of-12">
+                        <div class="slds-m-around_small slds-align-middle">
+                            <button class="resetButton">Reset Filter</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- List of Cards-->
+    <div class="slds-card listBody slds-p-around_small">
+        <div class="slds-scrollable_y">
+            <div class="slds-grid mainDiv">
+                <div class="slds-col slds-p-around_large">
+                    <ul class="slds-list_vertical slds-has-dividers_top-space">
+                        <aura:iteration items="{!v.videos}" var="videoInfo">
+                            <div class="slds-col slds-size_12-of-12 slds-p-bottom_medium">                     
+                                <c:VideoInfoCard video="{!videoInfo}"/>
+                            </div>
+                        </aura:iteration>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!--  <lightning:spinner aura:id="spinner" variant="brand" size="large"/>-->
+    </div>
+    <aura:if isTrue="{!v.isOpen}">
+        <c:ModalVideoComp video="{!v.selectedVideo}" isOpen="{!v.isOpen}"/>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.isCaseOpen}">
+        <c:CaseComp video="{!v.selectedVideocase}" isCaseOpen="{!v.isCaseOpen}"/>
+    </aura:if>
+</aura:component>
